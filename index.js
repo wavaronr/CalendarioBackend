@@ -13,7 +13,7 @@ const advisers = {
       asigned: [
         {
           id: 123456789,
-          name: "Wilmer Perez",
+          name: "Wilmer Perez Backen en Node",
           cargo: "Gestor de servicios I",
           buttons: ["Postular", "Botón 2"],
         },
@@ -311,8 +311,8 @@ const advisers = {
       week: 14,
       asigned: [
         {
-          id: 123456789,
-          name: "Juan ",
+          id: 1013601371,
+          name: "Juan preuba get ",
           cargo: "Gestor de servicios I",
           buttons: ["Botón 1", "Botón 2"],
         },
@@ -323,7 +323,7 @@ const advisers = {
           buttons: ["Botón 1", "Botón 2"],
         },
         {
-          id: 123456789,
+          id: 1016916103,
           name: "Juan ",
           cargo: "Gestor de servicios I",
           buttons: ["Botón 1", "Botón 2"],
@@ -395,10 +395,13 @@ app.get("/api/advisers", (req, res) => {
   console.log(res);
 });
 
-app.get("/api/advisers/:id", (req, res) => {
-  const adviser = advisers.find((c) => c.id === parseInt(req.params.id));
-  if (!adviser) return res.status(404).send("No encontrado");
-  else res.send(adviser);
+app.get("/api/advisers/week/:weekNumber", (req, res) => {
+  const weekFound = advisers.advisers.find(
+    (c) => c.week === parseInt(req.params.weekNumber)
+  );
+  console.log(weekFound);
+  if (!weekFound) return res.status(404).send("No encontrado");
+  else res.send(weekFound);
 });
 
 app.post("/api/advisers", (req, res) => {
